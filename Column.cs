@@ -3,6 +3,7 @@
 namespace DBMS {
     public abstract class Column {
         public const string type = "";
+        
         public string Name { get; set; }
 
         public abstract bool Validate(string value);
