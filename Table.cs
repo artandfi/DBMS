@@ -5,5 +5,9 @@ namespace DBMS {
         public string Name { get; set; }
         public List<Row> Rows { get; set; }
         public List<Column> Columns { get; set; }
+
+        public Table(string name) {
+            Name = name;
+        }
     }
 }
