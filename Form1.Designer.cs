@@ -24,114 +24,43 @@ namespace DBMS {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.btnOpen = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnAddColumn = new System.Windows.Forms.Button();
-            this.btnAddRow = new System.Windows.Forms.Button();
-            this.tbCreateDBName = new System.Windows.Forms.TextBox();
-            this.btnAddTable = new System.Windows.Forms.Button();
-            this.tbAddTableName = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.cbTypes = new System.Windows.Forms.ComboBox();
-            this.tbAddColumnName = new System.Windows.Forms.TextBox();
-            this.btnChooseFilePath = new System.Windows.Forms.Button();
             this.ofdChooseFilePath = new System.Windows.Forms.OpenFileDialog();
-            this.tbFilePath = new System.Windows.Forms.TextBox();
-            this.btnDeleteColumn = new System.Windows.Forms.Button();
-            this.btnDeleteRow = new System.Windows.Forms.Button();
-            this.btnDeleteTable = new System.Windows.Forms.Button();
             this.sfdSaveDB = new System.Windows.Forms.SaveFileDialog();
-            this.btnSaveDB = new System.Windows.Forms.Button();
             this.ofdOpenDB = new System.Windows.Forms.OpenFileDialog();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnCancelSearch = new System.Windows.Forms.Button();
-            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddTable = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteTable = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteColumn = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
             // 
             this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl.Location = new System.Drawing.Point(30, 444);
+            this.tabControl.Location = new System.Drawing.Point(17, 101);
             this.tabControl.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1940, 68);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Location = new System.Drawing.Point(32, 37);
-            this.btnOpen.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(188, 65);
-            this.btnOpen.TabIndex = 1;
-            this.btnOpen.Text = "Open";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(235, 34);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(188, 65);
-            this.btnCreate.TabIndex = 2;
-            this.btnCreate.Text = "New DB";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // btnAddColumn
-            // 
-            this.btnAddColumn.Location = new System.Drawing.Point(960, 34);
-            this.btnAddColumn.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnAddColumn.Name = "btnAddColumn";
-            this.btnAddColumn.Size = new System.Drawing.Size(188, 65);
-            this.btnAddColumn.TabIndex = 3;
-            this.btnAddColumn.Text = "Add Column";
-            this.btnAddColumn.UseVisualStyleBackColor = true;
-            this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
-            // 
-            // btnAddRow
-            // 
-            this.btnAddRow.Location = new System.Drawing.Point(1782, 34);
-            this.btnAddRow.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnAddRow.Name = "btnAddRow";
-            this.btnAddRow.Size = new System.Drawing.Size(188, 65);
-            this.btnAddRow.TabIndex = 4;
-            this.btnAddRow.Text = "Add Row";
-            this.btnAddRow.UseVisualStyleBackColor = true;
-            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
-            // 
-            // tbCreateDBName
-            // 
-            this.tbCreateDBName.Location = new System.Drawing.Point(235, 117);
-            this.tbCreateDBName.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.tbCreateDBName.Name = "tbCreateDBName";
-            this.tbCreateDBName.Size = new System.Drawing.Size(244, 43);
-            this.tbCreateDBName.TabIndex = 5;
-            // 
-            // btnAddTable
-            // 
-            this.btnAddTable.Location = new System.Drawing.Point(580, 34);
-            this.btnAddTable.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(188, 65);
-            this.btnAddTable.TabIndex = 6;
-            this.btnAddTable.Text = "Add Table";
-            this.btnAddTable.UseVisualStyleBackColor = true;
-            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
-            // 
-            // tbAddTableName
-            // 
-            this.tbAddTableName.Location = new System.Drawing.Point(580, 117);
-            this.tbAddTableName.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.tbAddTableName.Name = "tbAddTableName";
-            this.tbAddTableName.Size = new System.Drawing.Size(244, 43);
-            this.tbAddTableName.TabIndex = 7;
             // 
             // dataGridView
             // 
@@ -140,8 +69,17 @@ namespace DBMS {
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(32, 529);
+            this.dataGridView.Location = new System.Drawing.Point(19, 186);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 92;
@@ -150,179 +88,205 @@ namespace DBMS {
             this.dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_CellBeginEdit);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
             // 
-            // cbTypes
+            // menuStrip1
             // 
-            this.cbTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTypes.FormattingEnabled = true;
-            this.cbTypes.Items.AddRange(new object[] {
-            "INT",
-            "REAL",
-            "CHAR",
-            "STRING",
-            "TEXT FILE",
-            "INT INTERVAL"});
-            this.cbTypes.Location = new System.Drawing.Point(960, 191);
-            this.cbTypes.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.cbTypes.Name = "cbTypes";
-            this.cbTypes.Size = new System.Drawing.Size(296, 45);
-            this.cbTypes.TabIndex = 10;
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(2000, 45);
+            this.menuStrip1.TabIndex = 21;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // tbAddColumnName
+            // fileToolStripMenuItem
             // 
-            this.tbAddColumnName.Location = new System.Drawing.Point(960, 117);
-            this.tbAddColumnName.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.tbAddColumnName.Name = "tbAddColumnName";
-            this.tbAddColumnName.Size = new System.Drawing.Size(296, 43);
-            this.tbAddColumnName.TabIndex = 11;
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(103, 41);
+            this.fileToolStripMenuItem.Text = "Файл";
             // 
-            // btnChooseFilePath
+            // openToolStripMenuItem
             // 
-            this.btnChooseFilePath.Location = new System.Drawing.Point(1270, 327);
-            this.btnChooseFilePath.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnChooseFilePath.Name = "btnChooseFilePath";
-            this.btnChooseFilePath.Size = new System.Drawing.Size(188, 65);
-            this.btnChooseFilePath.TabIndex = 12;
-            this.btnChooseFilePath.Text = "Get file path";
-            this.btnChooseFilePath.UseVisualStyleBackColor = true;
-            this.btnChooseFilePath.Click += new System.EventHandler(this.btnChooseFilePath_Click);
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(373, 48);
+            this.openToolStripMenuItem.Text = "Відкрити";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // tbFilePath
+            // saveToolStripMenuItem
             // 
-            this.tbFilePath.Location = new System.Drawing.Point(1475, 327);
-            this.tbFilePath.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.tbFilePath.Name = "tbFilePath";
-            this.tbFilePath.Size = new System.Drawing.Size(489, 43);
-            this.tbFilePath.TabIndex = 13;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(373, 48);
+            this.saveToolStripMenuItem.Text = "Зберегти";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(194, 41);
+            this.editToolStripMenuItem.Text = "Редагування";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAddDatabase,
+            this.btnAddTable,
+            this.btnAddColumn,
+            this.btnAddRow});
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(284, 48);
+            this.addToolStripMenuItem.Text = "Додати";
+            // 
+            // btnAddDatabase
+            // 
+            this.btnAddDatabase.Name = "btnAddDatabase";
+            this.btnAddDatabase.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.btnAddDatabase.Size = new System.Drawing.Size(468, 48);
+            this.btnAddDatabase.Text = "Базу даних";
+            this.btnAddDatabase.Click += new System.EventHandler(this.btnAddDatabase_Click);
+            // 
+            // btnAddTable
+            // 
+            this.btnAddTable.Enabled = false;
+            this.btnAddTable.Name = "btnAddTable";
+            this.btnAddTable.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.btnAddTable.Size = new System.Drawing.Size(468, 48);
+            this.btnAddTable.Text = "Таблицю";
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
+            // 
+            // btnAddColumn
+            // 
+            this.btnAddColumn.Enabled = false;
+            this.btnAddColumn.Name = "btnAddColumn";
+            this.btnAddColumn.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.btnAddColumn.Size = new System.Drawing.Size(468, 48);
+            this.btnAddColumn.Text = "Стовпчик";
+            this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
+            // 
+            // btnAddRow
+            // 
+            this.btnAddRow.Enabled = false;
+            this.btnAddRow.Name = "btnAddRow";
+            this.btnAddRow.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.R)));
+            this.btnAddRow.Size = new System.Drawing.Size(468, 48);
+            this.btnAddRow.Text = "Рядок";
+            this.btnAddRow.Click += new System.EventHandler(this.btnAddRow_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDeleteDatabase,
+            this.btnDeleteTable,
+            this.btnDeleteColumn,
+            this.btnDeleteRow});
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(284, 48);
+            this.deleteToolStripMenuItem.Text = "Видалити";
+            // 
+            // btnDeleteDatabase
+            // 
+            this.btnDeleteDatabase.Enabled = false;
+            this.btnDeleteDatabase.Name = "btnDeleteDatabase";
+            this.btnDeleteDatabase.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.D)));
+            this.btnDeleteDatabase.Size = new System.Drawing.Size(448, 48);
+            this.btnDeleteDatabase.Text = "Базу даних";
+            this.btnDeleteDatabase.Click += new System.EventHandler(this.btnDeleteDatabase_Click);
+            // 
+            // btnDeleteTable
+            // 
+            this.btnDeleteTable.Enabled = false;
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.T)));
+            this.btnDeleteTable.Size = new System.Drawing.Size(448, 48);
+            this.btnDeleteTable.Text = "Таблицю";
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
             // 
             // btnDeleteColumn
             // 
-            this.btnDeleteColumn.Location = new System.Drawing.Point(992, 268);
-            this.btnDeleteColumn.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
+            this.btnDeleteColumn.Enabled = false;
             this.btnDeleteColumn.Name = "btnDeleteColumn";
-            this.btnDeleteColumn.Size = new System.Drawing.Size(238, 65);
-            this.btnDeleteColumn.TabIndex = 14;
-            this.btnDeleteColumn.Text = "Delete Column";
-            this.btnDeleteColumn.UseVisualStyleBackColor = true;
+            this.btnDeleteColumn.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.btnDeleteColumn.Size = new System.Drawing.Size(448, 48);
+            this.btnDeleteColumn.Text = "Стовпчик";
             this.btnDeleteColumn.Click += new System.EventHandler(this.btnDeleteColumn_Click);
             // 
             // btnDeleteRow
             // 
-            this.btnDeleteRow.Location = new System.Drawing.Point(1782, 142);
-            this.btnDeleteRow.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
+            this.btnDeleteRow.Enabled = false;
             this.btnDeleteRow.Name = "btnDeleteRow";
-            this.btnDeleteRow.Size = new System.Drawing.Size(188, 65);
-            this.btnDeleteRow.TabIndex = 15;
-            this.btnDeleteRow.Text = "Delete Row";
-            this.btnDeleteRow.UseVisualStyleBackColor = true;
+            this.btnDeleteRow.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.R)));
+            this.btnDeleteRow.Size = new System.Drawing.Size(448, 48);
+            this.btnDeleteRow.Text = "Рядок";
             this.btnDeleteRow.Click += new System.EventHandler(this.btnDeleteRow_Click);
             // 
-            // btnDeleteTable
+            // databaseNameLabel
             // 
-            this.btnDeleteTable.Location = new System.Drawing.Point(580, 191);
-            this.btnDeleteTable.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnDeleteTable.Name = "btnDeleteTable";
-            this.btnDeleteTable.Size = new System.Drawing.Size(242, 65);
-            this.btnDeleteTable.TabIndex = 16;
-            this.btnDeleteTable.Text = "Delete Table";
-            this.btnDeleteTable.UseVisualStyleBackColor = true;
-            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
-            // 
-            // btnSaveDB
-            // 
-            this.btnSaveDB.Location = new System.Drawing.Point(30, 120);
-            this.btnSaveDB.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnSaveDB.Name = "btnSaveDB";
-            this.btnSaveDB.Size = new System.Drawing.Size(188, 65);
-            this.btnSaveDB.TabIndex = 17;
-            this.btnSaveDB.Text = "Save";
-            this.btnSaveDB.UseVisualStyleBackColor = true;
-            this.btnSaveDB.Click += new System.EventHandler(this.btnSaveDB_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(32, 268);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(188, 65);
-            this.btnSearch.TabIndex = 18;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelSearch
-            // 
-            this.btnCancelSearch.Location = new System.Drawing.Point(30, 350);
-            this.btnCancelSearch.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.btnCancelSearch.Name = "btnCancelSearch";
-            this.btnCancelSearch.Size = new System.Drawing.Size(188, 65);
-            this.btnCancelSearch.TabIndex = 19;
-            this.btnCancelSearch.Text = "Cancel";
-            this.btnCancelSearch.UseVisualStyleBackColor = true;
-            // 
-            // tbSearch
-            // 
-            this.tbSearch.Location = new System.Drawing.Point(232, 313);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(489, 43);
-            this.tbSearch.TabIndex = 20;
+            this.databaseNameLabel.AutoSize = true;
+            this.databaseNameLabel.Location = new System.Drawing.Point(19, 55);
+            this.databaseNameLabel.Name = "databaseNameLabel";
+            this.databaseNameLabel.Size = new System.Drawing.Size(0, 37);
+            this.databaseNameLabel.TabIndex = 23;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2000, 1463);
-            this.Controls.Add(this.tbSearch);
-            this.Controls.Add(this.btnCancelSearch);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnSaveDB);
-            this.Controls.Add(this.btnDeleteTable);
-            this.Controls.Add(this.btnDeleteRow);
-            this.Controls.Add(this.btnDeleteColumn);
-            this.Controls.Add(this.tbFilePath);
-            this.Controls.Add(this.btnChooseFilePath);
-            this.Controls.Add(this.tbAddColumnName);
-            this.Controls.Add(this.cbTypes);
+            this.Controls.Add(this.databaseNameLabel);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.tbAddTableName);
-            this.Controls.Add(this.btnAddTable);
-            this.Controls.Add(this.tbCreateDBName);
-            this.Controls.Add(this.btnAddRow);
-            this.Controls.Add(this.btnAddColumn);
-            this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
             this.Name = "Form1";
             this.Text = "DBMS by Artem Fisunenko, MI-4";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button btnAddColumn;
-        private System.Windows.Forms.Button btnAddRow;
-        private System.Windows.Forms.TextBox tbCreateDBName;
-        private System.Windows.Forms.Button btnAddTable;
-        private System.Windows.Forms.TextBox tbAddTableName;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.ComboBox cbTypes;
-        private System.Windows.Forms.TextBox tbAddColumnName;
-        private System.Windows.Forms.Button btnChooseFilePath;
         private System.Windows.Forms.OpenFileDialog ofdChooseFilePath;
-        private System.Windows.Forms.TextBox tbFilePath;
-        private System.Windows.Forms.Button btnDeleteColumn;
-        private System.Windows.Forms.Button btnDeleteRow;
-        private System.Windows.Forms.Button btnDeleteTable;
         private System.Windows.Forms.SaveFileDialog sfdSaveDB;
-        private System.Windows.Forms.Button btnSaveDB;
         private System.Windows.Forms.OpenFileDialog ofdOpenDB;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnCancelSearch;
-        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnAddDatabase;
+        private System.Windows.Forms.ToolStripMenuItem btnAddTable;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnDeleteDatabase;
+        private System.Windows.Forms.ToolStripMenuItem btnDeleteTable;
+        private System.Windows.Forms.ToolStripMenuItem btnAddColumn;
+        private System.Windows.Forms.ToolStripMenuItem btnAddRow;
+        private System.Windows.Forms.ToolStripMenuItem btnDeleteRow;
+        private System.Windows.Forms.Label databaseNameLabel;
+        private System.Windows.Forms.ToolStripMenuItem btnDeleteColumn;
     }
 }

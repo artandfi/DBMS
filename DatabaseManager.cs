@@ -64,7 +64,10 @@ namespace DBMS {
         public bool DeleteDatabase(string path) {
             try {
                 _database = null;
-                File.Delete(path);
+
+                if (!string.IsNullOrEmpty(path)) {
+                    File.Delete(path);
+                }
 
                 return true;
             }
@@ -76,7 +79,7 @@ namespace DBMS {
 
         #region Table methods
         public bool AddTable(string name) {
-            if (name.Equals("") || _database == null) {
+            if (GetTableNames().Contains(name)) {
                 return false;
             }
 
@@ -88,6 +91,8 @@ namespace DBMS {
 
         public List<string> GetTableNames() => _database.Tables.Select(t => t.Name).ToList();
 
+        public List<string> GetColumnNames(int tableIndex) => _database.Tables[tableIndex].Columns.Select(c => c.Name).ToList();
+
         public void DeleteTable(int index) {
             _database.Tables.RemoveAt(index);
         }
@@ -95,7 +100,7 @@ namespace DBMS {
 
         #region Column methods
         public bool AddColumn(int tableIndex, Column column) {
-            if (_database == null || _database.Tables.Count == 0) {
+            if (GetColumnNames(tableIndex).Contains(column.Name)) {
                 return false;
             }
 
@@ -109,10 +114,16 @@ namespace DBMS {
         }
 
         public void DeleteColumn(int tableIndex, int columnIndex) {
-            _database.Tables[tableIndex].Columns.RemoveAt(columnIndex);
+            var table = _database.Tables[tableIndex];
+            
+            table.Columns.RemoveAt(columnIndex);
 
-            foreach (var row in _database.Tables[tableIndex].Rows) {
+            foreach (var row in table.Rows) {
                 row.Values.RemoveAt(columnIndex);
+            }
+
+            if (table.Columns.Count == 0) {
+                table.Rows.Clear();
             }
         }
         #endregion
