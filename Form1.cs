@@ -35,8 +35,6 @@ namespace DBMS {
         private const string _errorEmptyRowName = "Назву рядка не задано";
         private const string _errorDuplicateRowName = "Рядок з такою назвою вже існує";
 
-        private const string _fileTypesFilter = "TDB files (*.tdb)|*.tdb)";
-
         private string _cellOldValue = "";
         private string _cellNewValue = "";
 
@@ -263,35 +261,27 @@ namespace DBMS {
 
         #region File methods
         private void openToolStripMenuItem_Click(object sender, EventArgs e) {
-            ofdOpenDB.Filter = _fileTypesFilter;
-            ofdOpenDB.FilterIndex = 1;
-            ofdOpenDB.RestoreDirectory = true;
-
-            if (ofdChooseFilePath.ShowDialog() == DialogResult.OK) {
+            if (ofdOpenDB.ShowDialog() == DialogResult.OK) {
                 _dbManager.OpenDatabase(ofdOpenDB.FileName);
-            }
+                tabControl.TabPages.Clear();
+                databaseNameLabel.Text = _dbManager.Database.Name;
 
-            tabControl.TabPages.Clear();
+                List<string> tableNames = _dbManager.GetTableNames();
 
-            List<string> tableNames = _dbManager.GetTableNames();
+                foreach (string name in tableNames) {
+                    tabControl.TabPages.Add(name);
+                }
 
-            foreach (string name in tableNames) {
-                tabControl.TabPages.Add(name);
-            }
+                int tableIndex = tabControl.SelectedIndex;
 
-            int tableIndex = tabControl.SelectedIndex;
-
-            if (tableIndex != -1) {
-                RenderTable(_dbManager.GetTable(tableIndex));
+                if (tableIndex != -1) {
+                    RenderTable(_dbManager.GetTable(tableIndex));
+                }
             }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
             Stream stream;
-
-            sfdSaveDB.Filter = _fileTypesFilter;
-            sfdSaveDB.FilterIndex = 1;
-            sfdSaveDB.RestoreDirectory = true;
 
             if (sfdSaveDB.ShowDialog() == DialogResult.OK) {
                 if ((stream = sfdSaveDB.OpenFile()) != null) {
@@ -344,6 +334,9 @@ namespace DBMS {
         }
         #endregion
 
+        
+
+
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e) {
             int tableIndex = tabControl.SelectedIndex;
 
@@ -358,6 +351,21 @@ namespace DBMS {
                 btnDeleteColumn.Enabled = columnsExist && rowsExist;
                 btnDeleteRow.Enabled = columnsExist && rowsExist;
             }
+        }
+
+        private void btnProject_Click(object sender, EventArgs e) {
+            int tableIndex = tabControl.SelectedIndex;
+            var cells = dataGridView.SelectedCells.Cast<DataGridViewCell>().ToList();
+            var columnIndices = cells.GroupBy(c => c.ColumnIndex).Select(g => g.First().ColumnIndex).ToArray();
+            var projection = _dbManager.Project(tableIndex, columnIndices);
+
+            var table = _dbManager.GetTable(tableIndex);
+            var projectionForm = new ProjectionForm {
+                Text = $"{table.Name} - проекція"
+            };
+
+            projectionForm.RenderProjection(projection);
+            projectionForm.Show();
         }
     }
 }

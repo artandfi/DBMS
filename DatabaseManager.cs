@@ -4,6 +4,8 @@ using System.Linq;
 
 namespace DBMS {
     public class DatabaseManager {
+        private const char sep = '$';
+        private const char space = '\t';
         private const string _specialChars = "\\/:*?\"<>|";
         private Database _database;
         private static DatabaseManager _instance;
@@ -21,6 +23,8 @@ namespace DBMS {
         private DatabaseManager() { }
 
         #region Database methods
+        public Database Database { get => _database; set => _database = value; }
+
         public bool CreateDatabase(string name) {
             if (name.IndexOfAny(_specialChars.ToCharArray()) != -1) {
                 return false;
@@ -37,6 +41,7 @@ namespace DBMS {
                 streamWriter.WriteLine(_database.Name);
                 WriteTablesToFile(streamWriter);
                 streamWriter.Close();
+
                 return true;
             }
             catch {
@@ -48,7 +53,7 @@ namespace DBMS {
             try {
                 var streamReader = new StreamReader(path);
                 string file = streamReader.ReadToEnd();
-                string[] parts = file.Split('$');
+                string[] parts = file.Split(sep);
                 _database = new Database(parts[0]);
 
                 ReadTablesFromFile(parts);
@@ -161,12 +166,12 @@ namespace DBMS {
             return false;
         }
 
-        public List<Row> Project(int tableIndex, int[] columnIndices) {
+        public Table Project(int tableIndex, int[] columnIndices) {
             if (_database == null || _database.Tables.Count == 0 || _database.Tables[tableIndex].Columns.Count == 0) {
                 return null;
             }
 
-            var resList = new List<Row>();
+            var resRows = new List<Row>();
 
             foreach (var row in _database.Tables[tableIndex].Rows) {
                 var resRow = new Row();
@@ -175,10 +180,18 @@ namespace DBMS {
                     resRow.Values.Add(row.Values[i]);
                 }
 
-                resList.Add(resRow);
+                resRows.Add(resRow);
             }
 
-            return resList;
+            var resColumns = new List<Column>();
+            foreach (int i in columnIndices) {
+                resColumns.Add(_database.Tables[tableIndex].Columns[i]);
+            }
+
+            return new Table("") {
+                Columns = resColumns,
+                Rows = resRows
+            };
         }
         #endregion
 
@@ -196,15 +209,15 @@ namespace DBMS {
                 }
 
                 if (buf.Count > 2) {
-                    ReadColumnsFromFile(parts, buf, i);
+                    ReadColumnsFromFile(buf, i);
                     ReadRowsFromFile(buf, i);
                 }
             }
         }
 
-        private void ReadColumnsFromFile(string[] parts, List<string> buf, int tableIndex) {
-            string[] columnNames = buf[1].Split('\t');
-            string[] columnTypes = buf[1].Split('\t');
+        private void ReadColumnsFromFile(List<string> buf, int tableIndex) {
+            string[] columnNames = buf[1].Split(space);
+            string[] columnTypes = buf[2].Split(space);
 
             for (int j = 0; j < columnNames.Length - 1; j++) {
                 _database.Tables[tableIndex - 1].Columns.Add(ColumnFromString(columnNames[j], columnTypes[j]));
@@ -215,7 +228,7 @@ namespace DBMS {
             for (int j = 3; j < buf.Count; j++) {
                 _database.Tables[tableIndex - 1].Rows.Add(new Row());
 
-                var values = buf[j].Split('\t').ToList();
+                var values = buf[j].Split(space).ToList();
                 values.RemoveAt(values.Count - 1);
                 _database.Tables[tableIndex - 1].Rows.Last().Values.AddRange(values);
             }
@@ -223,7 +236,7 @@ namespace DBMS {
 
         private void WriteTablesToFile(StreamWriter streamWriter) {
             foreach (var table in _database.Tables) {
-                streamWriter.WriteLine('$');
+                streamWriter.WriteLine(sep);
                 streamWriter.WriteLine(table.Name);
 
                 WriteColumnsToFile(streamWriter, table);
@@ -233,13 +246,13 @@ namespace DBMS {
 
         private static void WriteColumnsToFile(StreamWriter streamWriter, Table table) {
             foreach (var column in table.Columns) {
-                streamWriter.Write(column.Name + '\t');
+                streamWriter.Write(column.Name + space);
             }
 
             streamWriter.WriteLine();
 
-            foreach (var column in table.Columns) {
-                streamWriter.Write(column.type + '\t');
+            foreach (dynamic column in table.Columns) {
+                streamWriter.Write(column.type + space);
             }
 
             streamWriter.WriteLine();
@@ -247,9 +260,11 @@ namespace DBMS {
 
         private static void WriteRowsToFile(StreamWriter streamWriter, Table table) {
             foreach (var row in table.Rows) {
-                foreach (var value in row.Values) {
-                    streamWriter.Write(value.ToString() + '\t');
+                foreach (string value in row.Values) {
+                    streamWriter.Write(value.ToString() + space);
                 }
+
+                streamWriter.WriteLine();
             }
         }
 

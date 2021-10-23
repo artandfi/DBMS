@@ -45,6 +45,8 @@ namespace DBMS {
             this.btnDeleteTable = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteColumn = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.проекціяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnProject = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -83,10 +85,23 @@ namespace DBMS {
             this.dataGridView.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 92;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView.Size = new System.Drawing.Size(1938, 899);
             this.dataGridView.TabIndex = 8;
             this.dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_CellBeginEdit);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
+            // 
+            // sfdSaveDB
+            // 
+            this.sfdSaveDB.Filter = "TDB files (*.tdb) |*.tdb|All Files (*.*)|*.*";
+            this.sfdSaveDB.InitialDirectory = "C:\\";
+            this.sfdSaveDB.RestoreDirectory = true;
+            // 
+            // ofdOpenDB
+            // 
+            this.ofdOpenDB.Filter = "TDB files|*.tdb|All files|*.*";
+            this.ofdOpenDB.InitialDirectory = "C:\\";
+            this.ofdOpenDB.RestoreDirectory = true;
             // 
             // menuStrip1
             // 
@@ -94,7 +109,8 @@ namespace DBMS {
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.проекціяToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(2000, 45);
@@ -236,6 +252,22 @@ namespace DBMS {
             this.btnDeleteRow.Text = "Рядок";
             this.btnDeleteRow.Click += new System.EventHandler(this.btnDeleteRow_Click);
             // 
+            // проекціяToolStripMenuItem
+            // 
+            this.проекціяToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnProject});
+            this.проекціяToolStripMenuItem.Name = "проекціяToolStripMenuItem";
+            this.проекціяToolStripMenuItem.Size = new System.Drawing.Size(154, 41);
+            this.проекціяToolStripMenuItem.Text = "Проекція";
+            // 
+            // btnProject
+            // 
+            this.btnProject.Name = "btnProject";
+            this.btnProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.J)));
+            this.btnProject.Size = new System.Drawing.Size(369, 48);
+            this.btnProject.Text = "Проекція";
+            this.btnProject.Click += new System.EventHandler(this.btnProject_Click);
+            // 
             // databaseNameLabel
             // 
             this.databaseNameLabel.AutoSize = true;
@@ -288,5 +320,7 @@ namespace DBMS {
         private System.Windows.Forms.ToolStripMenuItem btnDeleteRow;
         private System.Windows.Forms.Label databaseNameLabel;
         private System.Windows.Forms.ToolStripMenuItem btnDeleteColumn;
+        private System.Windows.Forms.ToolStripMenuItem проекціяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnProject;
     }
 }
