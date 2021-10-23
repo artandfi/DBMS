@@ -113,7 +113,7 @@ namespace DBMS {
             this.проекціяToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2000, 45);
+            this.menuStrip1.Size = new System.Drawing.Size(2000, 47);
             this.menuStrip1.TabIndex = 21;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -123,7 +123,7 @@ namespace DBMS {
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(103, 41);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(103, 43);
             this.fileToolStripMenuItem.Text = "Файл";
             // 
             // openToolStripMenuItem
@@ -148,7 +148,7 @@ namespace DBMS {
             this.addToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(194, 41);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(194, 43);
             this.editToolStripMenuItem.Text = "Редагування";
             // 
             // addToolStripMenuItem
@@ -257,20 +257,22 @@ namespace DBMS {
             this.проекціяToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnProject});
             this.проекціяToolStripMenuItem.Name = "проекціяToolStripMenuItem";
-            this.проекціяToolStripMenuItem.Size = new System.Drawing.Size(154, 41);
+            this.проекціяToolStripMenuItem.Size = new System.Drawing.Size(154, 43);
             this.проекціяToolStripMenuItem.Text = "Проекція";
             // 
             // btnProject
             // 
+            this.btnProject.Enabled = false;
             this.btnProject.Name = "btnProject";
             this.btnProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.J)));
-            this.btnProject.Size = new System.Drawing.Size(369, 48);
+            this.btnProject.Size = new System.Drawing.Size(403, 48);
             this.btnProject.Text = "Проекція";
             this.btnProject.Click += new System.EventHandler(this.btnProject_Click);
             // 
             // databaseNameLabel
             // 
             this.databaseNameLabel.AutoSize = true;
+            this.databaseNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.databaseNameLabel.Location = new System.Drawing.Point(19, 55);
             this.databaseNameLabel.Name = "databaseNameLabel";
             this.databaseNameLabel.Size = new System.Drawing.Size(0, 37);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -32,8 +33,7 @@ namespace DBMS {
         private const string _errorDuplicateTableName = "Таблиця з таким іменем вже існує";
         private const string _errorEmptyColumnName = "Назву стовпчика не задано";
         private const string _errorDuplicateColumnName = "Стовпчик з такою назвою вже існує";
-        private const string _errorEmptyRowName = "Назву рядка не задано";
-        private const string _errorDuplicateRowName = "Рядок з такою назвою вже існує";
+        private const string _errorValidation = "Введіть значення типу ";
 
         private string _cellOldValue = "";
         private string _cellNewValue = "";
@@ -69,6 +69,7 @@ namespace DBMS {
                 btnDeleteColumn.Enabled = false;
                 btnAddRow.Enabled = false;
                 btnDeleteRow.Enabled = false;
+                btnProject.Enabled = false;
             }
         }
 
@@ -125,6 +126,7 @@ namespace DBMS {
                     btnDeleteColumn.Enabled = false;
                     btnAddRow.Enabled = false;
                     btnDeleteRow.Enabled = false;
+                    btnProject.Enabled = false;
                 }
                 else {
                     RenderTable(_dbManager.GetTable(tabControl.SelectedIndex));
@@ -179,6 +181,7 @@ namespace DBMS {
                     btnDeleteColumn.Enabled = false;
                     btnAddRow.Enabled = false;
                     btnDeleteRow.Enabled = false;
+                    btnProject.Enabled = false;
                 }
             }
         }
@@ -221,6 +224,7 @@ namespace DBMS {
             RenderTable(_dbManager.GetTable(tableIndex));
             btnDeleteRow.Enabled = true;
             btnDeleteColumn.Enabled = true;
+            btnProject.Enabled = true;
         }
 
         private void btnDeleteRow_Click(object sender, EventArgs e) {
@@ -235,6 +239,7 @@ namespace DBMS {
                 if (dataGridView.RowCount == 0) {
                     btnDeleteRow.Enabled = false;
                     btnDeleteColumn.Enabled = false;
+                    btnProject.Enabled = false;
                 }
             }
         }
@@ -246,15 +251,14 @@ namespace DBMS {
         }
 
         private void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
-            _cellNewValue = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             int tableIndex = tabControl.SelectedIndex;
+            _cellNewValue = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 
             if (!_dbManager.ChangeCellValue(_cellNewValue, tableIndex, e.ColumnIndex, e.RowIndex)) {
-                dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = _cellOldValue;
-            }
+                dynamic column = _dbManager.GetTable(tableIndex).Columns[e.ColumnIndex];
 
-            if (tableIndex != -1) {
-                RenderTable(_dbManager.GetTable(tableIndex));
+                dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = _cellOldValue;
+                MessageBox.Show(_errorValidation + column.type, _titleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
@@ -276,7 +280,15 @@ namespace DBMS {
 
                 if (tableIndex != -1) {
                     RenderTable(_dbManager.GetTable(tableIndex));
+
+                    if (_dbManager.GetTable(tableIndex).Columns.Count > 0) {
+                        btnProject.Enabled = true;
+                    }
                 }
+
+                btnAddDatabase.Enabled = false;
+                btnDeleteDatabase.Enabled = true;
+                btnAddTable.Enabled = true;
             }
         }
 
@@ -334,8 +346,6 @@ namespace DBMS {
         }
         #endregion
 
-        
-
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e) {
             int tableIndex = tabControl.SelectedIndex;
@@ -350,6 +360,7 @@ namespace DBMS {
                 btnAddRow.Enabled = columnsExist;
                 btnDeleteColumn.Enabled = columnsExist && rowsExist;
                 btnDeleteRow.Enabled = columnsExist && rowsExist;
+                btnProject.Enabled = columnsExist;
             }
         }
 

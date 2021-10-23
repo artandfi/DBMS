@@ -30,6 +30,7 @@ namespace DBMS {
             // 
             // projectionView
             // 
+            this.projectionView.AllowUserToAddRows = false;
             this.projectionView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.projectionView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectionView.Location = new System.Drawing.Point(0, 0);
