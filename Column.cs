@@ -2,8 +2,8 @@
 
 namespace DBMS {
     public abstract class Column {
-        public readonly string type = "";
         public string Name { get; set; }
+        public string Type { get; } = "";
 
         public Column(string name) {
             Name = name;
@@ -13,42 +13,42 @@ namespace DBMS {
     }
 
     public class IntColumn : Column {
-        public new readonly string type = "INT";
+        public new string Type { get; } = "INT";
         public IntColumn(string name) : base(name) { }
 
         public override bool Validate(string value) => int.TryParse(value, out _);
     }
 
     public class RealColumn : Column {
-        public new readonly string type = "REAL";
+        public new string Type { get; }  = "REAL";
         public RealColumn(string name) : base(name) { }
 
         public override bool Validate(string value) => double.TryParse(value, out _);
     }
 
     public class CharColumn : Column {
-        public new readonly string type = "CHAR";
+        public new string Type { get; } = "CHAR";
         public CharColumn(string name) : base(name) { }
 
         public override bool Validate(string value) => char.TryParse(value, out _);
     }
 
     public class StringColumn : Column {
-        public new readonly string type = "STRING";
+        public new string Type { get; } = "STRING";
         public StringColumn(string name) : base(name) { }
 
         public override bool Validate(string value) => true;
     }
 
     public class TextFileColumn : Column {
-        public new readonly string type = "TEXT FILE";
+        public new string Type { get; }  = "TEXT FILE";
         public TextFileColumn(string name) : base(name) { }
 
         public override bool Validate(string value) => value.ToLower().EndsWith(".txt") && File.Exists(value);
     }
 
     public class IntIntervalColumn : Column {
-        public new readonly string type = "INT INTERVAL";
+        public new string Type { get; } = "INT INTERVAL";
         public IntIntervalColumn(string name) : base(name) { }
 
         public override bool Validate(string value) {

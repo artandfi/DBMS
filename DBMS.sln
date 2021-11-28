@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBMS", "DBMS.csproj", "{643BB627-B36F-4629-88E6-9C6F3642DD0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "..\Tests\Tests.csproj", "{9DCDF32E-84CE-4BAD-9FA3-5A3F28B25EA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "..\Tests\Tests.csproj", "{9DCDF32E-84CE-4BAD-9FA3-5A3F28B25EA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMS Web API", "..\DBMS Web API\DBMS Web API.csproj", "{03D974BE-BB0A-4CC6-8E98-CEF9D5A697D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9DCDF32E-84CE-4BAD-9FA3-5A3F28B25EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DCDF32E-84CE-4BAD-9FA3-5A3F28B25EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DCDF32E-84CE-4BAD-9FA3-5A3F28B25EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D974BE-BB0A-4CC6-8E98-CEF9D5A697D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D974BE-BB0A-4CC6-8E98-CEF9D5A697D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D974BE-BB0A-4CC6-8E98-CEF9D5A697D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D974BE-BB0A-4CC6-8E98-CEF9D5A697D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

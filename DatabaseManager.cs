@@ -158,7 +158,7 @@ namespace DBMS {
         #region Extra operations
         public bool ChangeCellValue(string newValue, int tableIndex, int columnIndex, int rowIndex) {
             if (_database.Tables[tableIndex].Columns[columnIndex].Validate(newValue)) {
-                _database.Tables[tableIndex].Rows[rowIndex].Values[columnIndex] = newValue;
+                _database.Tables[tableIndex].Rows[rowIndex][columnIndex] = newValue;
 
                 return true;
             }
